@@ -23,7 +23,6 @@ public enum RoleCollection {
         public Object setRole() {
             return $map("role","optimus");
         }
-
     },
 
     CONSTRUCTUS("constructus"){

@@ -67,6 +67,7 @@ public class Constructus implements CreepInterface {
         if (checkPop()) {
             Game.spawns.$get("Overmind")
                     .createCreep(TemplateCollection.WORKER.setTemplate(), null, RoleCollection.CONSTRUCTUS.setRole());
+            System.out.println("Made new Constructor");
         }
 
     }

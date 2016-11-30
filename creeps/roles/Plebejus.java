@@ -62,6 +62,7 @@ public class Plebejus implements CreepInterface {
         if (checkPop()) {
             Game.spawns.$get("Overmind")
                     .createCreep(TemplateCollection.WORKER.setTemplate(),null, RoleCollection.PLEBEJUS.setRole());
+            System.out.println("Made new Pleb");
         }
     }
 
