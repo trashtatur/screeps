@@ -5,28 +5,24 @@ import static def.screeps.Globals.*;
 /**
  * Created by Andi on 30.11.2016.
  */
-//TODO entweder Methode finden dieses Enum zum Laufen zu kriegen, oder es wieder in ne Utility Klasse ändern
+
 public enum TemplateCollection {
 
-    WORKER("worker"){
-        @Override
-        public String[] setTemplate() {
-            return new String[]{WORK,CARRY,MOVE,MOVE};
-        }
-    };
-
-    public String[] setTemplate(){
-        return null;
-    }
+    WORKER("worker",new String[]{WORK,CARRY,MOVE,MOVE});
 
     private String name;
+    private String[] template;
 
-    TemplateCollection(String name) {
+    TemplateCollection(String name,String[] template) {
+
+        this.template=template;
         this.name = name;
     }
     @Override
     public String toString() {
         return name;
     }
+
+    public String[] getTemplate() { return template; }
 
 }

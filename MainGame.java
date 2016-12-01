@@ -2,6 +2,7 @@ package org.myScreeps;
 
 import def.screeps.Game;
 import def.screeps.Memory;
+import org.myScreeps.creeps.GlaDoS;
 import org.parakoopa.screeps.api.Mapper;
 
 /**
@@ -9,7 +10,7 @@ import org.parakoopa.screeps.api.Mapper;
  */
 public class MainGame {
     public void loop() {
-
+        System.out.println("TICKELDY FREDDERICK!");
         //Memory aufräumen
         String [] creepNames= new Mapper(Game.creeps).getKeys();
         for (String creepName : creepNames ) {
@@ -19,6 +20,9 @@ public class MainGame {
             }
 
         }
+        GlaDoS.birthSubroutine();
+        GlaDoS.workSubroutine();
 
+        System.out.println("TICKELDY FREDDERICK!");
     }
 }

@@ -1,30 +1,18 @@
-package org.myScreeps.creeps.roles;
+package org.myScreeps.creeps.brains;
 
 import def.screeps.ConstructionSite;
 import def.screeps.Creep;
-import def.screeps.Game;
 import def.screeps.Source;
-import org.myScreeps.creeps.RoleCollection;
-import org.myScreeps.creeps.TemplateCollection;
 import org.myScreeps.creeps.interfaces.CreepRole;
-import org.parakoopa.screeps.api.Mapper;
 
 import static def.screeps.Globals.*;
 
 /**
  * Created by Andi on 30.11.2016.
  */
-public class ConstructusRole implements CreepRole {
+public final class ConstructusBrain implements CreepRole {
 
-    public ConstructusRole(String role) {
-
-    }
-
-    private Creep[] constructus=new Mapper<Creep>(Game.creeps).filter(
-            creep -> creep.memory.$get("role")=="constructus"
-    );
-
-    public void construct() {
+    public static void workRoutine(Creep[] constructus) {
 
         for (Creep creep: constructus) {
 

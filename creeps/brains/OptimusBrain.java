@@ -1,28 +1,18 @@
-package org.myScreeps.creeps.roles;
+package org.myScreeps.creeps.brains;
 
 import def.screeps.Creep;
-import def.screeps.Game;
 import def.screeps.Source;
 import org.myScreeps.creeps.interfaces.CreepRole;
-import org.parakoopa.screeps.api.Mapper;
 
 import static def.screeps.Globals.*;
 
 /**
  * Created by andi on 30.11.16.
  */
-public class OptimusRole implements CreepRole {
+public final class OptimusBrain implements CreepRole {
 
-    public OptimusRole(String role) {
+    public static void workRoutine(Creep[] optimus) {
 
-    }
-
-    private Creep[] optimus=new Mapper<Creep>(Game.creeps).filter(
-            creep -> creep.memory.$get("role")=="optimus"
-    );
-
-
-    public void gatherAndUpgrade() {
         for (Creep creep: optimus) {
             Source[] sources = creep.room.find(FIND_SOURCES);
 

@@ -1,4 +1,4 @@
-package org.myScreeps.creeps.roles;
+package org.myScreeps.creeps.brains;
 
 
 
@@ -12,7 +12,6 @@ import def.screeps.StructureSpawn;
 
 import org.myScreeps.creeps.interfaces.CreepRole;
 import org.parakoopa.screeps.api.Helper;
-import org.parakoopa.screeps.api.Mapper;
 
 import static def.screeps.Globals.*;
 
@@ -20,21 +19,11 @@ import static def.screeps.Globals.*;
 /**
  * Created by andi on 29.11.16.
  */
-public class PlebejusRole implements CreepRole {
+public final class PlebejusBrain implements CreepRole {
 
 
+    public static void workRoutine(Creep[] plebejus) {
 
-    public PlebejusRole(String role) {
-
-    }
-
-
-
-    private Creep[] plebejus =new Mapper<Creep>(Game.creeps).filter(
-            creep -> creep.memory.$get("role")=="plebejus"
-    );
-
-    public void makeMeMoney() {
         for (Creep creep: plebejus) {
             if (creep.carry.energy<creep.carryCapacity) {
                 Source[] sources=creep.room.find(FIND_SOURCES);
