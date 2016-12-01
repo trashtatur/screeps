@@ -6,7 +6,7 @@ import def.screeps.Game;
 import def.screeps.Source;
 import org.myScreeps.creeps.RoleCollection;
 import org.myScreeps.creeps.TemplateCollection;
-import org.myScreeps.creeps.interfaces.CreepInterface;
+import org.myScreeps.creeps.interfaces.CreepRole;
 import org.parakoopa.screeps.api.Mapper;
 
 import static def.screeps.Globals.*;
@@ -14,7 +14,11 @@ import static def.screeps.Globals.*;
 /**
  * Created by Andi on 30.11.2016.
  */
-public class Constructus implements CreepInterface {
+public class ConstructusRole implements CreepRole {
+
+    public ConstructusRole(String role) {
+
+    }
 
     private Creep[] constructus=new Mapper<Creep>(Game.creeps).filter(
             creep -> creep.memory.$get("role")=="constructus"
@@ -24,7 +28,7 @@ public class Constructus implements CreepInterface {
 
         for (Creep creep: constructus) {
 
-            //ROLESWITCHER
+            //JOBS
             if (creep.carry.energy == creep.carryCapacity) {
                 creep.memory.$set("harvesting", false);
                 creep.memory.$set("building", true);
@@ -55,20 +59,5 @@ public class Constructus implements CreepInterface {
                 }
             }
         }
-    }
-
-    @Override
-    public boolean checkPop() {
-        return constructus.length<2;
-    }
-
-    @Override
-    public void makeBabby() {
-        if (checkPop()) {
-            Game.spawns.$get("Overmind")
-                    .createCreep(TemplateCollection.WORKER.setTemplate(), null, RoleCollection.CONSTRUCTUS.setRole());
-            System.out.println("Made new Constructor");
-        }
-
     }
 }

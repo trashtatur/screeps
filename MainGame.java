@@ -2,9 +2,6 @@ package org.myScreeps;
 
 import def.screeps.Game;
 import def.screeps.Memory;
-import org.myScreeps.creeps.roles.Constructus;
-import org.myScreeps.creeps.roles.Optimus;
-import org.myScreeps.creeps.roles.Plebejus;
 import org.parakoopa.screeps.api.Mapper;
 
 /**
@@ -22,18 +19,6 @@ public class MainGame {
             }
 
         }
-
-        Plebejus plebejus =new Plebejus();
-        Optimus optimus=new Optimus();
-        Constructus constructus= new Constructus();
-                plebejus.makeBabby();
-                optimus.makeBabby();
-                constructus.makeBabby();
-                plebejus.makeMeMoney();
-                optimus.gatherAndUpgrade();
-                constructus.construct();
-
-        System.out.println("Tick finished");
 
     }
 }

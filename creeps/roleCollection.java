@@ -1,46 +1,31 @@
 package org.myScreeps.creeps;
 
-import def.screeps.Game;
-import jsweet.lang.Object;
-
-import static def.screeps.Globals.*;
-import static jsweet.util.Globals.$map;
+import org.myScreeps.creeps.interfaces.CreepRole;
+import org.myScreeps.creeps.roles.ConstructusRole;
+import org.myScreeps.creeps.roles.OptimusRole;
+import org.myScreeps.creeps.roles.PlebejusRole;
 
 /**
  * Created by andi on 30.11.16.
  */
+//TODO entweder Methode finden dieses Enum zum Laufen zu kriegen, oder es wieder in ne Utility Klasse ändern
 public enum RoleCollection {
 
-    PLEBEJUS("plebejus"){
-        @Override
-        public Object setRole() {
-            return $map("role", "optimus");
-        }
-    },
+    PLEBEJUS("plebejus",new PlebejusRole("plebejus")),
 
-    OPTIMUS("optimus"){
-        @Override
-        public Object setRole() {
-            return $map("role","optimus");
-        }
-    },
+    OPTIMUS("optimus", new OptimusRole("optimus")),
 
-    CONSTRUCTUS("constructus"){
-        @Override
-        public Object setRole() {
-            return $map("role", "optimus");
-        }
+    CONSTRUCTUS("constructus", new ConstructusRole("constructus")){
+
     };
 
-
-    public Object setRole(){
-        return null;
-    }
-
     private String name;
+    private CreepRole role;
 
-    RoleCollection(String name) {
+    RoleCollection(String name, CreepRole role) {
+
         this.name = name;
+        this.role = role;
     }
     @Override
     public String toString() {

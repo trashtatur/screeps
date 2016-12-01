@@ -5,6 +5,7 @@ import static def.screeps.Globals.*;
 /**
  * Created by Andi on 30.11.2016.
  */
+//TODO entweder Methode finden dieses Enum zum Laufen zu kriegen, oder es wieder in ne Utility Klasse ändern
 public enum TemplateCollection {
 
     WORKER("worker"){

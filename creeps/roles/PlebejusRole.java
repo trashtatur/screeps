@@ -10,9 +10,7 @@ import def.screeps.Source;
 import def.screeps.Structure;
 import def.screeps.StructureSpawn;
 
-import org.myScreeps.creeps.RoleCollection;
-import org.myScreeps.creeps.TemplateCollection;
-import org.myScreeps.creeps.interfaces.CreepInterface;
+import org.myScreeps.creeps.interfaces.CreepRole;
 import org.parakoopa.screeps.api.Helper;
 import org.parakoopa.screeps.api.Mapper;
 
@@ -22,10 +20,18 @@ import static def.screeps.Globals.*;
 /**
  * Created by andi on 29.11.16.
  */
-public class Plebejus implements CreepInterface {
+public class PlebejusRole implements CreepRole {
+
+
+
+    public PlebejusRole(String role) {
+
+    }
+
+
 
     private Creep[] plebejus =new Mapper<Creep>(Game.creeps).filter(
-            creep -> creep.memory.$get("role")=="pleb"
+            creep -> creep.memory.$get("role")=="plebejus"
     );
 
     public void makeMeMoney() {
@@ -51,20 +57,4 @@ public class Plebejus implements CreepInterface {
             }
         }
     }
-
-    @Override
-    public boolean checkPop() {
-        return plebejus.length<2;
-    }
-
-    @Override
-    public void makeBabby() {
-        if (checkPop()) {
-            Game.spawns.$get("Overmind")
-                    .createCreep(TemplateCollection.WORKER.setTemplate(),null, RoleCollection.PLEBEJUS.setRole());
-            System.out.println("Made new Pleb");
-        }
-    }
-
-
 }
