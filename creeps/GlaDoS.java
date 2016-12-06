@@ -1,66 +1,71 @@
 package org.myScreeps.creeps;
 
+import def.screeps.ConstructionSite;
 import def.screeps.Creep;
 import def.screeps.Game;
-import org.myScreeps.creeps.brains.ConstructusBrain;
-import org.myScreeps.creeps.brains.OptimusBrain;
-import org.myScreeps.creeps.brains.PlebejusBrain;
-import org.myScreeps.creeps.interfaces.CreepRole;
+import def.screeps.Memory;
+import org.myScreeps.creeps.collections.RoleCollection;
+import org.myScreeps.creeps.collections.TemplateCollection;
 import org.parakoopa.screeps.api.Mapper;
 
-import java.util.ArrayList;
+
+import static def.screeps.Globals.FIND_CONSTRUCTION_SITES;
 
 /**
  * Created by Andi on 30.11.2016.
  */
-public final class GlaDoS {
+public class GlaDoS {
 
-    private static Mapper<Creep> allCreeps=new Mapper<Creep>(Game.creeps);
+    private  Mapper<Creep> allCreeps=new Mapper<Creep>(Game.creeps);
 
-
-    public static void birthSubroutine() {
+    public void plebBirthSubroutine() {
         //Create Plebejans
-        if (checkPop(allCreeps.filter(creep -> creep.memory.$get("role")=="plebejus"))) {
-           Game.spawns.$get("Overmind").createCreep(
-                   TemplateCollection.WORKER.getTemplate(),
-                   null,
-                   RoleCollection.PLEBEJUS.getRole()
-           );
+        if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "plebejus").length < 3) {
+            System.out.println("PLEBCHECK: ");
+            System.out.println(allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "plebejus").length < 3);
+            Game.spawns.$get("Overmind").createCreep(
+                    TemplateCollection.WORKER.getTemplate(),
+                    null,
+                    RoleCollection.PLEBEJUS.getRole()
+            );
         }
+    }
+    public void optimusBirthSubroutine() {
         //Create Optimus'
-        if (checkPop(allCreeps.filter(creep -> creep.memory.$get("role")=="optimus"))) {
+        if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "optimus").length < 2) {
+            System.out.println("OPTI CHECK: ");
+            System.out.println(allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "optimus").length < 2);
             Game.spawns.$get("Overmind").createCreep(
                     TemplateCollection.WORKER.getTemplate(),
                     null,
                     RoleCollection.OPTIMUS.getRole()
             );
         }
+    }
+    public void constructusBirthSubroutine() {
         // Create Constructurus
-        if (checkPop(allCreeps.filter(creep -> creep.memory.$get("role")=="constructus"))) {
+        if (allCreeps.filter((Creep creep) -> creep.memory.$get("role")=="constructus").length<2) {
+            System.out.println("CONSTRU CHECK");
+            System.out.println(allCreeps.filter((Creep creep) -> creep.memory.$get("role")=="constructus").length<2 );
+            if (this.checkConstrSites().length!=0)
             Game.spawns.$get("Overmind").createCreep(
                     TemplateCollection.WORKER.getTemplate(),
                     null,
                     RoleCollection.CONSTRUCTUS.getRole()
             );
         }
-
     }
-
-    public static void workSubroutine() {
-        //Sage den einzelnen Brains dass sie arbeiten sollen mit den jeweiligen zu Ihnen
-        //passenden Creeps aus der Map aller Creeps.
-        PlebejusBrain.workRoutine(allCreeps.filter(creep -> creep.$get("role")=="plebejus"));
-        OptimusBrain.workRoutine(allCreeps.filter(creep -> creep.$get("role")=="optimus"));
-        ConstructusBrain.workRoutine(allCreeps.filter(creep -> creep.$get("role")=="constructus"));
+    public void cleanSubroutine() {
+        String [] memcreepNames= new Mapper(Memory.creeps).getKeys();
+        for (String creepName: memcreepNames) {
+            if (Game.creeps.$get(creepName)==null) {
+                Memory.creeps.$delete(creepName);
+                System.out.println("Dragging out the dead body of "+creepName);
+            }
+        }
     }
-
-    //Checks the Population
-    private static boolean checkPop(Creep[] creeps) {
-
-        return creeps.length<2;
+    public ConstructionSite[] checkConstrSites() {
+       return Game.spawns.$get("Overmind").room.find(FIND_CONSTRUCTION_SITES);
     }
-
-
-
 
 }

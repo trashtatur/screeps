@@ -1,4 +1,4 @@
-package org.myScreeps.creeps;
+package org.myScreeps.creeps.collections;
 
 import jsweet.lang.Object;
 
@@ -11,9 +11,9 @@ public enum RoleCollection {
 
     PLEBEJUS("plebejus",$map("role","plebejus")),
 
-    OPTIMUS("optimus", $map("role","plebejus")),
+    OPTIMUS("optimus", $map("role","optimus")),
 
-    CONSTRUCTUS("constructus", $map("role","plebejus"));
+    CONSTRUCTUS("constructus", $map("role","constructus"));
 
     private String name;
     private Object role;
