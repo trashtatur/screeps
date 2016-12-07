@@ -13,6 +13,8 @@ public enum RoleCollection {
 
     OPTIMUS("optimus", $map("role","optimus")),
 
+    REGENERATUS("regeneratus", $map("role","regeneratus")),
+
     CONSTRUCTUS("constructus", $map("role","constructus"));
 
     private String name;

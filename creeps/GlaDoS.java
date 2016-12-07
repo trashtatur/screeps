@@ -21,8 +21,6 @@ public class GlaDoS {
     public void plebBirthSubroutine() {
         //Create Plebejans
         if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "plebejus").length < 3) {
-            System.out.println("PLEBCHECK: ");
-            System.out.println(allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "plebejus").length < 3);
             Game.spawns.$get("Overmind").createCreep(
                     TemplateCollection.WORKER.getTemplate(),
                     null,
@@ -33,8 +31,6 @@ public class GlaDoS {
     public void optimusBirthSubroutine() {
         //Create Optimus'
         if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "optimus").length < 2) {
-            System.out.println("OPTI CHECK: ");
-            System.out.println(allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "optimus").length < 2);
             Game.spawns.$get("Overmind").createCreep(
                     TemplateCollection.WORKER.getTemplate(),
                     null,
@@ -42,11 +38,21 @@ public class GlaDoS {
             );
         }
     }
+
+    public void regeneratusBirthSubroutine() {
+        //Create Optimus'
+        if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "regeneratus").length < 1) {
+            Game.spawns.$get("Overmind").createCreep(
+                    TemplateCollection.WORKER.getTemplate(),
+                    null,
+                    RoleCollection.REGENERATUS.getRole()
+            );
+        }
+    }
+
     public void constructusBirthSubroutine() {
         // Create Constructurus
         if (allCreeps.filter((Creep creep) -> creep.memory.$get("role")=="constructus").length<2) {
-            System.out.println("CONSTRU CHECK");
-            System.out.println(allCreeps.filter((Creep creep) -> creep.memory.$get("role")=="constructus").length<2 );
             if (this.checkConstrSites().length!=0)
             Game.spawns.$get("Overmind").createCreep(
                     TemplateCollection.WORKER.getTemplate(),
