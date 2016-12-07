@@ -42,6 +42,6 @@ public class MainGame {
         //Check if Constructus Creeps are needed anymore. If not: kill them.
         constructusBrain.suicideCheck(new Mapper<Creep>(Game.creeps).filter(creep -> creep.memory.$get("role")=="constructus"),glaDoS);
         //--------------------------------------------------------------------------------
-        
+
     }
 }
