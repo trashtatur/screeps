@@ -8,4 +8,5 @@ import jsweet.lang.Object;
  */
 public interface CreepRole {
 
+    void workRoutine(Creep[] creeps);
 }
