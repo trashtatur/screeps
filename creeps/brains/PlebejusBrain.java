@@ -20,6 +20,10 @@ public class PlebejusBrain implements CreepRole {
 
     public void workRoutine(Creep[] plebejus) {
 
+        /*
+        TODO Need to rewrite the Routine so that only one worker harvests one source.
+        TODO Their Template needs an Update! They need to harvest more efficiently.
+         */
 
         for (Creep creep: plebejus) {
 

@@ -35,6 +35,7 @@ public class RegeneratusBrain implements CreepRole {
             if ((Boolean) creep.memory.$get("repairing")) {
                 Structure[] target=creep.room.find(FIND_STRUCTURES, Helper.findFilter(
                         (Structure structure) -> structure.hitsMax>structure.hits
+                        //TODO Make this one more efficient... perhaps let it wait a bit before repairing a structure?
                 ));
                 if (creep.repair(target[0])==ERR_NOT_IN_RANGE) {
                     creep.moveTo(target[0].pos);

@@ -17,6 +17,8 @@ public enum RoleCollection {
 
     CONSTRUCTUS("constructus", $map("role","constructus"));
 
+    //TODO Add transportus
+
     private String name;
     private Object role;
 

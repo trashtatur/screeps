@@ -43,7 +43,7 @@ public final class Braniac {
                     creep.moveTo(targets[0].pos);
                 }
                 //If all extensions are empty, leech energy from spawn
-                else if (targets.length==0) {
+                else if (targets.length==0) {                                   //TODO Change the 50 to something more dynamic. Like Creep MaxEnergy or something
                         if (Game.spawns.$get("Overmind").transferEnergy(creep,50)==ERR_NOT_IN_RANGE) {
                             creep.say("Spawnleech");
                             creep.moveTo(Game.spawns.$get("Overmind").pos);

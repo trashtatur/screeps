@@ -7,6 +7,7 @@ import org.myScreeps.creeps.brains.ConstructusBrain;
 import org.myScreeps.creeps.brains.OptimusBrain;
 import org.myScreeps.creeps.brains.PlebejusBrain;
 import org.myScreeps.creeps.brains.RegeneratusBrain;
+import org.myScreeps.creeps.handlers.BirthHandler;
 import org.parakoopa.screeps.api.Mapper;
 
 
@@ -19,15 +20,14 @@ public class MainGame {
 
         //Create new fresh instance of central control Classes to avoid caching problems!
         GlaDoS glaDoS=new GlaDoS();
+        BirthHandler birthHandler =new BirthHandler(glaDoS);
         PlebejusBrain plebejusBrain= new PlebejusBrain();
         ConstructusBrain constructusBrain=new ConstructusBrain();
         OptimusBrain optimusBrain=new OptimusBrain();
         RegeneratusBrain regeneratusBrain=new RegeneratusBrain();
 
-        glaDoS.plebBirthSubroutine();       //Birth new Creeps if needed
-        glaDoS.constructusBirthSubroutine();
-        glaDoS.optimusBirthSubroutine();
-        glaDoS.regeneratusBirthSubroutine();
+        birthHandler.birthPriority();       //Birth new Creeps if needed
+        glaDoS.constructusBirthSubroutine();   //GlaDOS still handles these
         glaDoS.cleanSubroutine();       //Clean Memory of dead Creeps
 
         //Declare workroutine for the different roles.

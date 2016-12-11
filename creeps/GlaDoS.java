@@ -16,46 +16,43 @@ import static def.screeps.Globals.FIND_CONSTRUCTION_SITES;
  */
 public class GlaDoS {
 
+    //TODO As soon as the if clause from constructus is outsourced remoge this Array.
     private  Mapper<Creep> allCreeps=new Mapper<Creep>(Game.creeps);
 
     public void plebBirthSubroutine() {
         //Create Plebejans
-        if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "plebejus").length < 3) {
             Game.spawns.$get("Overmind").createCreep(
-                    TemplateCollection.WORKER.getTemplate(),
+                    TemplateCollection.HARVESTER.getTemplate(),
                     null,
                     RoleCollection.PLEBEJUS.getRole()
             );
-        }
     }
     public void optimusBirthSubroutine() {
         //Create Optimus'
-        if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "optimus").length < 2) {
+
             Game.spawns.$get("Overmind").createCreep(
-                    TemplateCollection.WORKER.getTemplate(),
+                    TemplateCollection.HARVESTER.getTemplate(),
                     null,
                     RoleCollection.OPTIMUS.getRole()
             );
-        }
     }
 
     public void regeneratusBirthSubroutine() {
-        //Create Optimus'
-        if (allCreeps.filter((Creep creep) -> creep.memory.$get("role") == "regeneratus").length < 1) {
+        //Create Regeneratus'
             Game.spawns.$get("Overmind").createCreep(
-                    TemplateCollection.WORKER.getTemplate(),
+                    TemplateCollection.HARVESTER.getTemplate(),
                     null,
                     RoleCollection.REGENERATUS.getRole()
             );
-        }
     }
 
     public void constructusBirthSubroutine() {
+        //TODO this needs to be integrated in a Priority Handler somehow. Meaning it should just birth if the handler allows it.
         // Create Constructurus
         if (allCreeps.filter((Creep creep) -> creep.memory.$get("role")=="constructus").length<2) {
             if (this.checkConstrSites().length!=0)
             Game.spawns.$get("Overmind").createCreep(
-                    TemplateCollection.WORKER.getTemplate(),
+                    TemplateCollection.HARVESTER.getTemplate(),
                     null,
                     RoleCollection.CONSTRUCTUS.getRole()
             );
@@ -70,6 +67,7 @@ public class GlaDoS {
             }
         }
     }
+    //TODO Dont forget to change this method when removing the if-clause in constructusBirthSubroutine
     public ConstructionSite[] checkConstrSites() {
        return Game.spawns.$get("Overmind").room.find(FIND_CONSTRUCTION_SITES);
     }
